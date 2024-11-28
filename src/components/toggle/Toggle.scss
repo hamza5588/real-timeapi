@@ -1,0 +1,80 @@
+[data-component='Toggle'] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Increased space between label and toggle */
+  cursor: pointer;
+  overflow: hidden;
+  height: 48px;
+  padding: 0 6px;
+  background-color: #ececf1;
+  border-radius: 30px; /* More rounded edges for a softer look */
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+  
+  &:hover {
+    background-color: #d8d8d8;
+    transform: translateY(-2px); /* Lift effect on hover */
+  }
+
+  div.label {
+    position: relative;
+    color: #666;
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 2;
+    user-select: none;
+  }
+
+  div.label.left {
+    color: #fff;
+  }
+
+  div.label.right {
+    margin-left: -8px;
+    color: #333; /* Default color for the right label */
+  }
+
+  .toggle-background {
+    background-color: #4caf50; /* Lush green for the active state */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 30px;
+    transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &[data-enabled='true'] {
+    div.label.right {
+      color: #fff; /* White text when toggled on */
+    }
+    .toggle-background {
+      left: 50%;
+      width: 50%;
+      background-color: #ff7043; /* Vibrant orange when enabled */
+    }
+  }
+
+  &[data-enabled='false'] {
+    div.label.left {
+      color: #fff; /* White text when toggled off */
+    }
+    .toggle-background {
+      left: 0;
+      width: 50%;
+      background-color: #4caf50; /* Green when disabled */
+    }
+  }
+}
